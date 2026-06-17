@@ -20,11 +20,11 @@
         async function getLatestVersion(){
             let version = 1;
             let ok = true;
-            while (ok){
+            while (true){
                 let response = await fetch("https://kye1331.github.io/hsbuilds/V" + version, {method: "HEAD"});
                 console.log("version" + String(version) + ": " + response.status);
                 if (response.status === 404){
-                    ok = false;
+                    return version;
                 } else {
                 version +=1; 
                 }
