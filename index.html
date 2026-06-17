@@ -22,6 +22,7 @@
             let ok = true;
             while (ok){
                 let response = await fetch("hsbuilds/V" + version, {method: "HEAD"});
+                console.log("version" + String(version) + ": " + response.status);
                 if (response.status === 404){
                     break
                 }
@@ -42,7 +43,7 @@
     </script>
 <body>
     <p> Enter Version Number (e.g "1")</p>
-    <input id="input" placeholder="Enter Version Number"> </input> <button onClick="loadVersion(document.getElementById('input').innerHTML);"> GO </button>
+    <input id="input" placeholder="Enter Version Number"> </input> <button onClick="loadVersion(document.getElementById('input').value);"> GO </button>
     <br>
     <button onClick="loadLatestVersion();"> Load Latest Version</button>
     
