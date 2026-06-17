@@ -16,11 +16,35 @@
         }
     </style>
 </head>
+    <script>
+        async function getLatestVersion(){
+            let version = 1;
+            let ok = true;
+            while (ok){
+                let response = await fetch("hsbuilds/V" + version, {method: "HEAD"});
+                if (response.status === 404){
+                    break
+                }
+                version +=1;
+            }            
+            return version
+        }
+        
+        async function loadLatestVersion(){
+            let version = await getLatestVersion();
+            loadVersion(version);
+        }
+        function loadVersion(version){
+            
+            open("/hsbuilds/V" + "version");
+        }
+        
+    </script>
 <body>
-    
-    <a href="/hsbuilds/V1">V1<a>
-    <a>V2<a>
-    <a>V3<a>
+    <p> Enter Version Number (e.g "1")</p>
+    <input id="input" placeholder="Enter Version Number"> </input> <button onClick="loadVersion(document.getElementById('input').innerHTML);"> GO </button>
+    <br>
+    <button onClick="loadLatestVersion();"> Load Latest Version</button>
     
 </body>
 </html>
