@@ -21,7 +21,7 @@
             let version = 1;
             let ok = true;
             while (ok){
-                let response = await fetch("hsbuilds/V" + version, {method: "HEAD"});
+                let response = await fetch("/V" + version, {method: "HEAD"});
                 console.log("version" + String(version) + ": " + response.status);
                 if (response.status === 404){
                     break
