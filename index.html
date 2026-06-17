@@ -24,9 +24,10 @@
                 let response = await fetch("https://kye1331.github.io/hsbuilds/V" + version, {method: "HEAD"});
                 console.log("version" + String(version) + ": " + response.status);
                 if (response.status === 404){
-                    break
+                    ok = false;
+                } else {
+                version +=1; 
                 }
-                version +=1;
             }            
             return version
         }
